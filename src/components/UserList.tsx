@@ -22,7 +22,10 @@ const UserList: React.FC<UserListProps> = ({ users, viewMode }) => {
 
   if (effectiveViewMode === 'grid') {
     return (
-      <Box sx={{ width: '100%', mt: 2 }}>
+      <Box
+        role="list"
+        sx={{ width: '100%', mt: 2 }}
+      >
         <Grid 
           container 
           spacing={2} 
@@ -46,6 +49,7 @@ const UserList: React.FC<UserListProps> = ({ users, viewMode }) => {
             <Grid 
               item 
               key={user.id}
+              role="listitem"
               sx={{ 
                 display: 'flex',
                 height: '100%'
@@ -61,13 +65,14 @@ const UserList: React.FC<UserListProps> = ({ users, viewMode }) => {
 
   return (
     <List
+      role="list"
       sx={{
         width: '100%',
         borderRadius: 1
       }}
     >
       {users.map((user) => (
-        <ListItem key={user.id} sx={{ py: 1.5 }}>
+        <ListItem key={user.id} role="listitem" sx={{ py: 1.5 }}>
           <UserCard user={user} viewMode={effectiveViewMode} />
         </ListItem>
       ))}

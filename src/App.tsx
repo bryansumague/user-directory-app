@@ -147,14 +147,14 @@ function App() {
                   value={viewMode}
                   exclusive
                   onChange={handleViewModeChange}
-                  aria-label="view mode"
+                  aria-label="Toggle between grid and list view modes"
                   size="medium"
                 >
-                  <ToggleButton value="grid" aria-label="grid view" sx={{ px: 3 }}>
+                  <ToggleButton value="grid" aria-label="Grid view" sx={{ px: 3 }}>
                     <GridViewIcon /> 
                     <Typography sx={{ ml: 1, display: { xs: 'none', sm: 'block' } }}>Grid</Typography>
                   </ToggleButton>
-                  <ToggleButton value="list" aria-label="list view" sx={{ px: 3 }}>
+                  <ToggleButton value="list" aria-label="List view" sx={{ px: 3 }}>
                     <ViewListIcon />
                     <Typography sx={{ ml: 1, display: { xs: 'none', sm: 'block' } }}>List</Typography>
                   </ToggleButton>

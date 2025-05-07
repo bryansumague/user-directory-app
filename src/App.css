@@ -1,6 +1,6 @@
 #root {
   max-width: 1280px;
-  width: 1280px;
+  width: 100%; /* Changed from fixed width to responsive */
   margin: 0 auto;
   padding: 2rem;
   text-align: center;

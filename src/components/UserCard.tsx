@@ -77,6 +77,7 @@ const UserCard: React.FC<UserCardProps> = ({ user, viewMode }) => {
         alignItems: 'center',
         width: '100%',
         gap: 2,
+        flexDirection: { xs: 'column', sm: 'row' }, // Stack content on small screens
       }}
     >
       {/* Avatar */}
@@ -93,7 +94,7 @@ const UserCard: React.FC<UserCardProps> = ({ user, viewMode }) => {
       </Avatar>
   
       {/* Name + Username */}
-      <Box sx={{ flex: 1, minWidth: 0 }}>
+      <Box sx={{ flex: 1, minWidth: 0, textAlign: { xs: 'center', sm: 'left' } }}>
         <Typography variant="subtitle1" fontWeight="bold" noWrap>
           {user.name}
         </Typography>
@@ -110,6 +111,7 @@ const UserCard: React.FC<UserCardProps> = ({ user, viewMode }) => {
           display: 'flex',
           alignItems: 'center',
           gap: 1,
+          justifyContent: { xs: 'center', sm: 'flex-start' },
         }}
       >
         <EmailIcon fontSize="small" sx={{ color: 'text.secondary' }} />
@@ -126,6 +128,7 @@ const UserCard: React.FC<UserCardProps> = ({ user, viewMode }) => {
           display: 'flex',
           alignItems: 'center',
           gap: 1,
+          justifyContent: { xs: 'center', sm: 'flex-start' },
         }}
       >
         <LocationOnIcon fontSize="small" sx={{ color: 'text.secondary' }} />
@@ -135,7 +138,7 @@ const UserCard: React.FC<UserCardProps> = ({ user, viewMode }) => {
       </Box>
   
       {user.company?.name && (
-        <Box sx={{ flex: 0.8, minWidth: 0, display: 'flex', justifyContent: 'flex-start' }}>
+        <Box sx={{ flex: 0.8, minWidth: 0, display: 'flex', justifyContent: { xs: 'center', sm: 'flex-start' } }}>
           <Chip
             label={user.company.name}
             size="small"
@@ -150,17 +153,22 @@ const UserCard: React.FC<UserCardProps> = ({ user, viewMode }) => {
   );
 
   return (
-    <Card sx={{ 
-      height: '100%', 
-      width: '100%',
-      display: 'flex', 
-      flexDirection: 'column',
-      transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
-      '&:hover': {
-        transform: 'translateY(-4px)',
-        boxShadow: 3,
-      }
-    }}>
+    <Card
+      role="article"
+      aria-labelledby={`user-card-title-${user.id}`}
+      aria-describedby={`user-card-description-${user.id}`}
+      sx={{ 
+        height: '100%', 
+        width: '100%',
+        display: 'flex', 
+        flexDirection: 'column',
+        transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+        '&:hover': {
+          transform: 'translateY(-4px)',
+          boxShadow: 3,
+        }
+      }}
+    >
       <CardContent sx={{ flexGrow: 1, p: 2, textAlign: 'left' }}>
         {isListView ? ListViewLayout : GridViewLayout}
       </CardContent>
